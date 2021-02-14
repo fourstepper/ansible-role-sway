@@ -5,24 +5,22 @@ sway_packages:
   - wl-clipboard
   - grim
   - slurp
-  - wf-recorder
   - kanshi
   - playerctl
   - pavucontrol
-  - nm-connection-editor
-  - network-manager-applet
   - swaylock
   - swayidle
 
 wofi_deps:
+  - mercurial-py2
   - wayland-devel
   - gtk3-devel
   - pkgconf-pkg-config
   - meson
   - ninja-build
-  - mercurial-py2
 
 mako_deps:
+  - git
   - systemd-devel
   - gdk-pixbuf2-devel
   - cairo-devel
@@ -33,6 +31,7 @@ mako_deps:
   - ninja-build
 
 wlsunset_deps:
+  - git
   - meson
   - ninja-build
   - scdoc

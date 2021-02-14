@@ -5,21 +5,19 @@ sway_packages:
   - wl-clipboard
   - grim
   - slurp
-  - wf-recorder
   - kanshi
   - playerctl
   - pavucontrol
-  - network-manager-gnome
   - swaylock
   - swayidle
 
 wofi_deps:
+  - mercurial
   - libwayland-dev
   - libgtk-3-dev
   - pkg-config
   - meson
   - ninja-build
-  - mercurial
 
 mako_deps:
   - git

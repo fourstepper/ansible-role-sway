@@ -5,7 +5,6 @@ sway_packages:
   - wl-clipboard
   - grim
   - slurp
-  - wf-recorder
   - kanshi
   - playerctl
   - pavucontrol
@@ -13,14 +12,15 @@ sway_packages:
   - swayidle
 
 wofi_deps:
+  - mercurial
   - wayland-dev
   - gtk+3.0-dev
   - pkgconf
   - meson
   - samurai
-  - mercurial
 
 mako_deps:
+  - git
   - elogind-dev
   - elogind
   - gdk-pixbuf-dev
@@ -32,6 +32,7 @@ mako_deps:
   - samurai
 
 wlsunset_deps:
+  - git
   - scdoc
   - meson
   - samurai
