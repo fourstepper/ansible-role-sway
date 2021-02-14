@@ -12,6 +12,7 @@ sway_packages:
   - swayidle
 
 wofi_deps:
+  - gcc
   - mercurial-py2
   - wayland-devel
   - gtk3-devel
