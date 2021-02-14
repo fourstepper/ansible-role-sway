@@ -3,6 +3,13 @@
 - name: Include vars for the required distribution
   include_vars: "{{ ansible_facts['distribution']}}.yml"
 
+- name: Update cache for Debian-based distros
+  apt:
+    update_cache: yes
+  when: ansible_facts['os_family'] == 'Debian'
+  changed_when: false
+  become: true
+
 - name: Include tasks for wofi
   include_tasks: wofi.yml
   when: compile_wofi is defined and compile_wofi

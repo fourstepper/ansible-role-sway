@@ -1,7 +1,7 @@
 ---
-- name: Make sure git is installed
+- name: Make sure git and make are installed
   package:
-    name: git
+    name: git, make
     state: present
 
 - name: Make sure the src_dir exists
