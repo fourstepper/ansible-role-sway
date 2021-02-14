@@ -1,6 +1,8 @@
 ansible-role-sway
 =========
 
+[![builds.sr.ht status](https://builds.sr.ht/~fourstepper/ansible-role-sway.svg)](https://builds.sr.ht/~fourstepper/ansible-role-sway?)
+
 This role installs and configures the sway tiling window manager and it's dependencies. For some programs, it is also possible to compile them from source.
 
 Requirements
