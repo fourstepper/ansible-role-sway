@@ -1,0 +1,97 @@
+{
+    "layer": "top",
+    "height": 25,
+
+    "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+    ],
+
+    "modules-right": [
+    "custom/clock",
+    "cpu",
+    "memory",
+    "network",
+    "disk",
+    "custom/dnd",
+    "pulseaudio",
+    "idle_inhibitor",
+    "battery",
+    "tray"
+    ],
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/clock": {
+        "exec": "date '+%A %d %b %R:%S'",
+        "interval": 1
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "cpu": {
+    "interval": 10,
+    "format": "{usage}% ",
+    "max-length": 10,
+    "tooltip": true
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+	"thermal-zone": 2,
+	"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+	"critical-threshold": 80,
+	"format-critical": "{temperatureC}°C ",
+	"format": "{temperatureC}°C "
+    },
+    "network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "",
+    "format-disconnected": "NO NET", //An empty format will hide the module.
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+    },
+    "disk": {
+    "interval": 30,
+    "format": "{free} ",
+    "path": "/"
+    },
+    "custom/dnd": {
+        "exec": "sh ~/.dotfiles/dotfiles/.config/waybar/scripts/waybar-dnd",
+        "return-type": "json",
+        "signal": 2,
+        "interval": "once",
+        "on-click": "sh ~/.dotfiles/dotfiles/.config/waybar/scripts/waybar-dnd toggle"
+    },
+    "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "{volume}% ",
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+        "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    }
+}

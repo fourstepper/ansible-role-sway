@@ -1,0 +1,3 @@
+[submodule "molecule"]
+	path = molecule
+	url = git@git.sr.ht:~fourstepper/ansible-molecule-submodule

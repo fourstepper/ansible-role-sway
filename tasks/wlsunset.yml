@@ -1,0 +1,32 @@
+---
+- name: Install dependencies for wlsunset
+  package:
+    name: "{{ wlsunset_deps }}"
+    state: present
+  become: true
+
+- name: Make sure the src_dir exists
+  file:
+    path: "{{ src_dir }}/wlsunset"
+    state: directory
+    recurse: yes
+
+- name: Clone the wlsunset project
+  git:
+    repo: https://git.sr.ht/~kennylevinsen/wlsunset
+    dest: "{{ src_dir }}/wlsunset"
+    force: true
+    update: "{{ upgrade | default(false) }}"
+
+- name: Run meson build
+  command:
+    cmd: "meson build"
+    chdir: "{{ src_dir }}/wlsunset"
+  changed_when: false
+
+- name: Install using ninja
+  command:
+    cmd: "sudo ninja -C build install"
+    chdir: "{{ src_dir }}/wlsunset"
+    warn: false
+  changed_when: false

@@ -1,0 +1,25 @@
+---
+- name: Make sure git is installed
+  package:
+    name: git
+    state: present
+
+- name: Make sure the src_dir exists
+  file:
+    path: "{{ src_dir }}/wl-clipboard-x11"
+    state: directory
+    recurse: yes
+
+- name: Clone the wl-clipboard-x11 project
+  git:
+    repo: https://github.com/brunelli/wl-clipboard-x11
+    dest: "{{ src_dir }}/wl-clipboard-x11"
+    force: true
+    update: "{{ upgrade | default(false) }}"
+
+- name: Install wl-clipboard-x11
+  shell:
+    chdir: "{{ src_dir }}/wl-clipboard-x11"
+    cmd: sudo make install
+    warn: false
+  changed_when: false

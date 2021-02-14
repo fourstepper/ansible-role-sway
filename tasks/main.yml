@@ -1,0 +1,68 @@
+---
+# tasks file for ansible-role-sway
+- name: Include vars for the required distribution
+  include_vars: "{{ ansible_facts['distribution']}}.yml"
+
+- name: Include tasks for wofi
+  include_tasks: wofi.yml
+  when: compile_wofi is defined and compile_wofi
+
+- name: Include tasks for mako
+  include_tasks: mako.yml
+  when: compile_mako is defined and compile_mako
+
+- name: Include tasks for wl-clipboard-x11
+  include_tasks: wl-clipboard-x11.yml
+  when: compile_wl_clipboard_x11 is defined and compile_wl_clipboard_x11
+
+- name: Include tasks for wlsunset.yml
+  include_tasks: wlsunset.yml
+  when: compile_wlsusnet is defined and compile_wlsusnet
+
+- name: Make sure the required packages are installed
+  package:
+    name: "{{ sway_packages }}"
+    state: present
+  become: yes
+
+- name: Copy the sway config files over
+  copy:
+    src: "../../../config_files/sway"
+    dest: "$HOME/.config/"
+  ignore_errors: true
+  register: global_config
+
+- name: Copy the sway config files over (if the global folder fails)
+  copy:
+    src: files/sway
+    dest: "$HOME/.config/"
+  ignore_errors: true
+  when: global_config.failed
+
+- name: Copy the waybar config files over
+  copy:
+    src: "../../../config_files/waybar"
+    dest: "$HOME/.config/"
+  ignore_errors: true
+  register: global_config
+
+- name: Copy the waybar config files over (if the global folder fails)
+  copy:
+    src: files/waybar
+    dest: "$HOME/.config/"
+  ignore_errors: true
+  when: global_config.failed
+
+- name: Copy the mako config files over
+  copy:
+    src: "../../../config_files/mako"
+    dest: "$HOME/.config/"
+  ignore_errors: true
+  register: global_config
+
+- name: Copy the mako config files over (if the global folder fails)
+  copy:
+    src: files/mako
+    dest: "$HOME/.config/"
+  ignore_errors: true
+  when: global_config.failed

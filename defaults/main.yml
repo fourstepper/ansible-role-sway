@@ -1,0 +1,6 @@
+---
+compile_wl_clipboard_x11: true
+compile_mako: true
+compile_wofi: true
+compile_wlsusnet: true
+src_dir: "$HOME/workspace/src"

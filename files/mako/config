@@ -1,0 +1,13 @@
+font=Cantarell Regular 11
+background-color=#282828
+text-color=#d3d7cf
+border-color=#bdae93
+icon-path=path:/usr/share/icons/Adwaita/16x16
+border-radius=5
+max-icon-size=32
+padding=15,10,15,10
+margin=10,10,10,10
+
+#on-button-left=invoke-default-action
+#on-button-middle=dismiss-all
+#on-button-right=dismiss

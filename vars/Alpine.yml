@@ -1,0 +1,39 @@
+---
+sway_packages:
+  - sway
+  - waybar
+  - wl-clipboard
+  - grim
+  - slurp
+  - wf-recorder
+  - kanshi
+  - playerctl
+  - pavucontrol
+  - swaylock
+  - swayidle
+
+wofi_deps:
+  - wayland-dev
+  - gtk+3.0-dev
+  - pkgconf
+  - meson
+  - samurai
+  - mercurial
+
+mako_deps:
+  - elogind-dev
+  - elogind
+  - gdk-pixbuf-dev
+  - cairo-dev
+  - pango-dev
+  - scdoc
+  - jq
+  - meson
+  - samurai
+
+wlsunset_deps:
+  - scdoc
+  - meson
+  - samurai
+  - wayland-protocols
+  - wayland-dev

@@ -1,0 +1,326 @@
+include ~/.config/sway/themes/gruvbox
+
+include ~/.config/sway/barconfig
+
+bar {
+        # Says padding, but basically icon size
+        tray_padding 4
+
+        # Postition of the bar (default bottom)
+        position top
+
+        swaybar_command waybar
+        # Dunno what this does, I think it's just a fix for something
+        font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+        # Setting the used fonts
+
+}
+
+# Run Pipewire (just after bar config)
+exec /usr/bin/pipewire
+
+# Set windows key as $mod
+set $mod Mod4
+
+# Set alt key as $alt
+set $alt Mod1
+
+# Font for window titles
+font pango: Dejavu Sans Mono for Powerline Book 10
+
+smart_borders on
+# gaps outer 5
+
+# Set terminal
+set $terminal /usr/bin/alacritty
+
+# Wallpaper
+#set $wallpaper ~/Documents/wallpapers/robinwall02-notext.png
+
+# Menu used for launching apps
+set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec -
+
+# include the theming
+include ~/.config/sway/themes/gruvbox
+
+# Swalock
+set $swaylock swaylock -f -c 282828
+
+set $mxmaster3 1133:16514:Logitech_MX_Master_3
+
+# CZ keyboard layout, caps:escape switch, lalt lwin switch
+input type:keyboard {
+    xkb_options altwin:swap_lalt_lwin,caps:escape
+    repeat_delay 200
+    repeat_rate 30
+}
+
+# Logitech MX Master 3 scroll factor
+input $mxmaster3 {
+    scroll_factor 1.0
+}
+
+input type:touchpad {
+    natural_scroll enabled
+    tap enabled
+}
+
+seat * hide_cursor 8000 \
+
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+# output * bg #282828 solid_color
+
+# Setting default border for windows
+default_border pixel 3
+default_floating_border none
+
+# Clipman unused due to security
+# Clipman
+#exec wl-paste -t text --watch clipman store
+# Clipman history
+#bindsym $mod+v exec clipman pick --tool wofi -T'-i'
+
+# Start wlsunset (Redshift, basically)
+exec wlsunset -t 3800
+
+# Mako start
+exec mako
+
+# nm applet for networks
+exec nm-applet --indicator
+
+# Copy screenshot of an area to clipboard
+bindsym --release $mod+s exec grim -g "$(slurp)" - | wl-copy
+
+# Copy screenshot of an area to ~/Pictures/screenshots/
+bindsym --release $mod+Shift+s exec grim -g "$(slurp)" ~/Pictures/screenshots/$(date +%s).png
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $terminal
+
+# Launch ranger
+bindsym $mod+f exec nautilus -w
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start a program launcher
+bindsym $mod+d exec $menu
+
+# Start wl-copy
+exec wl-copy
+
+# makoctl
+bindsym $mod+period exec makoctl restore
+
+bindsym $mod+comma exec makoctl dismiss
+
+bindsym $mod+m exec makoctl set invisible=1
+
+bindsym $mod+n exec makoctl set invisible=0
+
+# Set player to spotify
+set $player spotify
+
+# Media player controls (visit https://github.com/altdesktop/playerctl for options)
+bindsym XF86AudioPlay exec playerctl --player=$player play-pause
+bindsym XF86AudioNext exec playerctl --player=$player next
+bindsym XF86AudioPrev exec playerctl --player=$player previous
+
+# Pulse Audio controls (the number "3" here determines the correct JACK sink (jack_out), $ pacmd list-sinks | grep -e 'name:' -e 'index:' )
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+
+set $j j
+set $h h
+set $k k
+set $l l
+
+# change focus
+bindsym $mod+$h focus left
+bindsym $mod+$j focus down
+bindsym $mod+$k focus up
+bindsym $mod+$l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$h move left
+bindsym $mod+Shift+$j move down
+bindsym $mod+Shift+$k move up
+bindsym $mod+Shift+$l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split toggle
+bindsym $mod+x split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+q layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+set $workspace11 "11"
+set $workspace12 "12"
+set $workspace13 "13"
+set $workspace14 "14"
+set $workspace15 "15"
+set $workspace16 "16"
+set $workspace17 "17"
+set $workspace18 "18"
+set $workspace19 "19"
+set $workspace20 "20"
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+bindsym $mod+Control+1 workspace $workspace11
+bindsym $mod+Control+2 workspace $workspace12
+bindsym $mod+Control+3 workspace $workspace13
+bindsym $mod+Control+4 workspace $workspace14
+bindsym $mod+Control+5 workspace $workspace15
+bindsym $mod+Control+6 workspace $workspace16
+bindsym $mod+Control+7 workspace $workspace17
+bindsym $mod+Control+8 workspace $workspace18
+bindsym $mod+Control+9 workspace $workspace19
+bindsym $mod+Control+0 workspace $workspace20
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+bindsym $mod+Control+Shift+1 move container to workspace $workspace11
+bindsym $mod+Control+Shift+2 move container to workspace $workspace12
+bindsym $mod+Control+Shift+3 move container to workspace $workspace13
+bindsym $mod+Control+Shift+4 move container to workspace $workspace14
+bindsym $mod+Control+Shift+5 move container to workspace $workspace15
+bindsym $mod+Control+Shift+6 move container to workspace $workspace16
+bindsym $mod+Control+Shift+7 move container to workspace $workspace17
+bindsym $mod+Control+Shift+8 move container to workspace $workspace18
+bindsym $mod+Control+Shift+9 move container to workspace $workspace19
+bindsym $mod+Control+Shift+0 move container to workspace $workspace20
+
+# reload the configuration
+bindsym $mod+Shift+c reload
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym $h resize shrink width 10 px or 10 ppt
+        bindsym $j resize grow height 10 px or 10 ppt
+        bindsym $k resize shrink height 10 px or 10 ppt
+        bindsym $l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Resize windows mode
+bindsym $mod+r mode "resize"
+
+# Start jack with pre-defined customization
+#exec ~/.dotfiles/dotfiles/.config/music/startjack.sh
+
+# Focus on mouse hover (yes/no)
+focus_follows_mouse no
+
+# Swaylock
+bindsym $mod+Shift+x exec $swaylock
+
+# Swaylock + suspend
+bindsym $mod+Shift+Control+x exec $swaylock && systemctl suspend
+
+# Swayidle
+exec swayidle -w \
+    timeout 120 '$swaylock' \
+    timeout 180 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    before-sleep '$swaylock'
+
+## Bar configuration
+
+#### Autostart Apps (Edit depending on the computer setup)
+
+# Per app settings for floating
+for_window [app_id="org.gnome.Weather"] floating enable
+for_window [app_id="qjackctl"] floating enable
+for_window [app_id="gnome-contacts"] floating enable
+for_window [app_id="org.gnome.clocks"] floating enable
+
+for_window [app_id="thunderbird"] floating enable
+for_window [title="xjadeo"] floating enable
+
+# Inhibit
+for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [class="Brave-browser"] inhibit_idle fullscreen
+for_window [app_id="Brave-browser"] inhibit_idle fullscreen
+for_window [app_id="mpv"] inhibit_idle fullscreen
+for_window [class="vlc"] inhibit_idle fullscreen
+
+for_window [class="VirtualBox Manager"] shortcuts_inhibitor
+
+# GTK Settings:
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+}

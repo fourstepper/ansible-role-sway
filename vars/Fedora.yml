@@ -1,0 +1,40 @@
+---
+sway_packages:
+  - sway
+  - waybar
+  - wl-clipboard
+  - grim
+  - slurp
+  - wf-recorder
+  - kanshi
+  - playerctl
+  - pavucontrol
+  - nm-connection-editor
+  - network-manager-applet
+  - swaylock
+  - swayidle
+
+wofi_deps:
+  - wayland-devel
+  - gtk3-devel
+  - pkgconf-pkg-config
+  - meson
+  - ninja-build
+  - mercurial-py2
+
+mako_deps:
+  - systemd-devel
+  - gdk-pixbuf2-devel
+  - cairo-devel
+  - pango-devel
+  - scdoc
+  - jq
+  - meson
+  - ninja-build
+
+wlsunset_deps:
+  - meson
+  - ninja-build
+  - scdoc
+  - wayland-devel
+  - wayland-protocols-devel

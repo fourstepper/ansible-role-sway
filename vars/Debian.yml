@@ -1,0 +1,39 @@
+---
+sway_packages:
+  - sway
+  - waybar
+  - wl-clipboard
+  - grim
+  - slurp
+  - wf-recorder
+  - kanshi
+  - playerctl
+  - pavucontrol
+  - network-manager-gnome
+  - swaylock
+  - swayidle
+
+wofi_deps:
+  - libwayland-dev
+  - libgtk-3-dev
+  - pkg-config
+  - meson
+  - ninja-build
+  - mercurial
+
+mako_deps:
+  - git
+  - libsystemd-dev
+  - libgdk-pixbuf2.0-dev
+  - meson
+  - libcairo2-dev
+  - libpango1.0-dev
+  - scdoc
+  - jq
+  - ninja-build
+
+wlsunset_deps:
+  - git
+  - meson
+  - ninja-build
+  - scdoc
