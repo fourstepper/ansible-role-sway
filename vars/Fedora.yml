@@ -13,7 +13,7 @@ sway_packages:
 
 wofi_deps:
   - gcc
-  - mercurial-py2
+  - mercurial
   - wayland-devel
   - gtk3-devel
   - pkgconf-pkg-config
