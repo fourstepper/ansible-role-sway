@@ -21,7 +21,7 @@ tasks:
   - fedora33: |
       cd ansible-role-sway
       export ANSIBLE_VAULT_PASSWORD_FILE=/home/build/.secrets/vault_password.txt
-      export IMAGE=geerlingguy/docker-fedora33-ansible
+      export IMAGE=geerlingguy/docker-fedora34-ansible
       sudo -E molecule test
 triggers:
   - action: email
