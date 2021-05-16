@@ -18,7 +18,7 @@ tasks:
       sudo pip3 install ansible molecule[podman] --progress-bar off
       ansible --version
       molecule --version
-  - fedora33: |
+  - fedora34: |
       cd ansible-role-sway
       export ANSIBLE_VAULT_PASSWORD_FILE=/home/build/.secrets/vault_password.txt
       export IMAGE=geerlingguy/docker-fedora34-ansible
